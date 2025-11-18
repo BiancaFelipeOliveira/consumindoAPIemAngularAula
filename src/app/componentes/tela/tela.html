@@ -1,0 +1,54 @@
+<div class="container">
+    <div *ngIf="mensagem" [style.color]="erro ? 'red' : 'green' ">
+        {{ mensagem }}
+    </div>
+    <div>
+        <form [formGroup]="form">
+            <label for="id">Id:</label>
+            <input type="text" id="id" formControlName="id" readonly><br>
+
+            <label for="nome">Nome:</label>
+            <input type="text" formControlName="nome" id="nome"><br>
+
+            <label for="localizacao">Localização:</label>
+            <input type="text" formControlName="localizacao" id="localizacao"><br>
+
+            <label for="telefone">Telefone:</label>
+            <input type="text" formControlName="telefone" id="telefone"><br>
+
+            <button type="button" (click)="salvarDados()">
+                Salvar
+            </button>
+            <button type="button" (click)="alterarDados()">
+                Atualizar
+            </button>
+            <button type="button" (click)="excluirDados()">
+                Excluir
+            </button>
+        </form>
+    </div>
+    <hr>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Nome</td>
+                    <td>Localizacao</td>
+                    <td>Telefone</td>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aqui vai entrar os dados -->
+                <tr *ngFor="let item of produtor" (click)="carregarProdutorFormulario(item)" style="cursor: pointer;">
+                    <td> {{ item.id }} </td>
+                    <td> {{ item.nome }} </td>
+                    <td> {{ item.localizacao }} </td>
+                    <td> {{ item.telefone }} </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
